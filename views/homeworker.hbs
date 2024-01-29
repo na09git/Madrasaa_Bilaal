@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Melka Walini School</title>
+    {{!-- favicon image --}}
+    <link rel="icon" href="/images/melka16x16.png" type="image/png">
+
+    {{!-- index css --}}
+    <link rel="stylesheet" href="/css/src/home.css">
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div style="padding-left: 50px; padding-right: 50px;  padding-bottom: 10px;">
+
+        <section id="dvi1">
+            {{> _homeheaderworker}}
+        </section>
+        <section id="div2">
+            {{> _welcomejumj}}
+        </section>
+        <section id="div3">
+            {{> _features}}
+        </section>
+        <section id="div4">
+            {{> _director_message}}
+        </section>
+        <section id="div5">
+            {{> _education }}
+        </section>
+        <section id="div6">
+            {{> _question_asked}}
+        </section>
+        <section id="div7">
+            {{> _skill}}
+        </section>
+        <section id="div8">
+            {{> _performing}}
+        </section>
+        <section id="div9">
+            {{> _testimonial }}
+        </section>
+        <section id="div10">
+            {{> _info }}
+        </section>
+
+    </div>
+
+    <section id="div11">
+        {{> _footer}}
+    </section>
+
+
+
+
+
+    <!-- Back-to-Top Button -->
+    <a href=""><img id="btn-back-to-top" src="https://img.icons8.com/color/48/circled-up-2--v1.png"
+            alt="circled-up-2--v1" />
+    </a>
+
+    <!-- Back-to-Top Styles -->
+    <style>
+        #btn-back-to-top {
+            z-index: 1;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+        }
+    </style>
+
+    <!-- Bootstrap and Font Awesome JS dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-xBqEnFk1TC+2s9wAeUnp76cCqA5IcMXYgRVNkd3LQ6ZXfJt3S2x82CUq3uSWq8J6"
+        crossorigin="anonymous"></script>
+
+    <!-- Back-to-Top Script -->
+    <script>
+        //Get the button
+        let mybutton = document.getElementById("btn-back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <!-- Back to top button Starts -->
+
+    <!-- Bootstrap and Font Awesome JS dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-xBqEnFk1TC+2s9wAeUnp76cCqA5IcMXYgRVNkd3LQ6ZXfJt3S2x82CUq3uSWq8J6"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

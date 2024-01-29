@@ -1,0 +1,94 @@
+<div class="w-100" style=" z-index: 100; position:fixed;">
+    {{> _storyheader}}
+</div>
+
+<style>
+    @media only screen and (max-width: 700px) {
+
+        #container_edit {
+            padding-left: 20px;
+            padding-right: 40px;
+        }
+    }
+
+    @media only screen and (min-width: 701px) {
+
+        #container_edit {
+            padding-left: 250px;
+            padding-right: 250px;
+        }
+    }
+</style>
+
+<div class="container row " id="container_edit" style="padding-top: 90px; width:auto;">
+    <div class=" bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+        style="padding-top: 20px; padding-right:10%; padding-left:10%;">
+
+        <div class="row text-center" style="align-items: center;">
+            <h3 class="bg-primary p-1" style="--bs-bg-opacity: .2; padding-left: 40px; padding-top: 70px;">
+                Edit Your Story </h3>
+        </div>
+
+        <div class="row " style="padding-left: 10px;">
+            <form action="/story/{{story._id}}" method="POST" class="col-md-8 col-lg-8" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="post">
+
+                <!-- 1 Title--->
+                <div class="row mb-2">
+                    <label for="title" class="col-sm-2 col-form-label">Title :</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" name="title" value="{{story.title}}">
+                    </div>
+                </div>
+
+                <!-- 2 story body--->
+                <div class="row mb-2">
+                    <label for="body" class="col-sm-6 col-form-label">Tell Us your story :</label>
+                </div>
+                <div class="row mb-2 w-100">
+                    <div>
+                        <textarea class="form-control" id="body" name="body">{{story.body}}</textarea>
+                    </div>
+                </div>
+                <!-- 3 status --->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="status" class="form-label">Status :</label>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" id="status" name="status">
+                            <option value="Public" {{#if (eq story.status 'Public' )}}selected{{/if}}>Public
+                            </option>
+                            <option value="Private" {{#if (eq story.status 'Private' )}}selected{{/if}}>
+                                Private
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 4 Image--->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="image" class="form-label">Change Image :</label>
+                    </div>
+                    <div class="col">
+                        <input type="file" class="form-control" id="image" name="image">
+                        {{#if story.imageBase64}}
+                        <img src='data:{{student.contentType}};base64,{{story.imageBase64}}' alt="{{story.name}}"
+                            width="100">
+                        {{else}}
+                        <img src="images/no_image.png" alt="{{story.name}}" width="100" class="img-thumbnail">
+                        {{/if}}
+                    </div>
+                </div>
+                <!-- 5 Action--->
+                <div class="mb-2" style="padding-left: 120px;">
+                    <input style="padding-left: 10%; padding-right: 10%;" type="submit" value="Save"
+                        class="btn btn-primary">
+                    <a style="padding-left: 10%; padding-right: 10%; padding-top:4%;" href="/story"
+                        class="btn btn-warning">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

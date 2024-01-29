@@ -1,0 +1,103 @@
+<div class="w-100" style="position: fixed; z-index: 100;">
+    {{> _studentheader}}
+</div>
+
+<div class="container" style="padding-top: 135px; padding-bottom: 20px;">
+    <div class="row">
+        <div class="col-md-8" style="padding-right: 50px; padding-left: 50px;">
+            <div class="row">
+                <div class="col text-end">
+                    <h3>{{student.name}}</h3>
+                </div>
+                <div class="col">
+                    <a href="/student/edit/{{student._id}}" class="btn p-1 btn-float text-primary">
+                        <i class="fas fa-edit fa-2x mx-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-3 card student">
+                <div class="card-content">
+                    {{!-- Name --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Name :</span>
+                        <span style="padding-left: 40px;">{{student.name}}</span>
+                    </div>
+                    <hr>
+                    {{!-- email --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Email :</span>
+                        <a style="padding-left: 40px;" href="mailto: {{student.email}}">
+                            {{student.email}}</a>
+                    </div>
+                    {{!-- phone --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Phone : </span>
+                        <span style="padding-left: 40px;">
+                            <a href="tel:  {{student.phone}} ">
+                                {{student.phone}}
+                            </a>
+                        </span>
+                    </div>
+                    {{!-- Grade --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Grade : </span>
+                        <span style="padding-left: 40px;">{{student.grade}}</span>
+                    </div>
+                    {{!-- status --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Status : </span>
+                        <span
+                            style="{{#eq student.status 'Paid'}}color: #28a745;{{else}}color: #ff0000;{{/eq}}; padding-left: 40px;">
+                            {{student.status}}
+                        </span>
+                    </div>
+                    {{!-- gender --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Gender :</span>
+                        <span
+                            style="{{#eq student.gender 'M'}}color: #28a745;{{else}}{{#eq student.gender 'F'}}color: #ff69b4;{{/eq}}{{/eq}}; padding-left: 40px;">
+                            {{student.gender}}
+                        </span>
+                    </div>
+                    {{!-- Registered Date --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Registered Date : </span>
+                        <span style="padding-left: 40px;"> {{formatDate student.createdAt 'MMMM Do YYYY, h:mm:ss
+                            a'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="padding-left: 45px; padding-right: 45px; padding-top: 25px; ">
+            <div class="card text-center">
+                <div class="card-content">
+                    <div style="padding-top: 10px;">
+                        <span class="card-title">{{student.name}}</span>
+                    </div>
+                    <div style="padding: 7px;">
+                        {{#if student.imageBase64}}
+                        <img src='data:{{student.contentType}};base64,{{student.imageBase64}}'
+                            class="rounded-circle img-fluid img-small" alt="student image"
+                            style="height: 150px; width: 150px;">
+                        {{else}}
+                        <img src="images/no_image.png" style="width:150; height:150px;" class="img-thumbnail">
+                        {{/if}}
+                    </div>
+                </div>
+                <hr>
+                <div class="card-action"
+                    style="padding-bottom: 13px; padding-left: 5px; padding-right: 5px; width:auto">
+                    <button type="button" class="btn btn-primary link-unstyled text-decoration-none"
+                        style="background-color: #3498db; border-color: #3498db;"
+                        onmouseover="this.style.backgroundColor='#2980b9'"
+                        onmouseout="this.style.backgroundColor='#3498db'"
+                        onclick="window.location.href='mailto: {{student.email}}'">
+                        Contact with {{student.email}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

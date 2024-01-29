@@ -1,0 +1,84 @@
+<div class="w-100" style="z-index: 100; position:fixed;">
+    {{> _problemheader}}
+</div>
+<div class="container row " style="padding-top: 7%; padding-bottom: 2%; padding-right:10%; padding-left:310px;">
+    <div class=" bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+        style="padding-top: 20px; padding-right:10%; padding-left:10%;">
+
+        <div class="row text-center" style="align-items: center;">
+            <h3 class="bg-primary p-1" style="--bs-bg-opacity: .2; padding-left: 40px; padding-top: 70px;">
+                Edit Student Problem </h3>
+        </div>
+
+        <div class="row " style="padding-left: 10px;">
+            <form action="/problem/{{problem._id}}" method="POST">
+                <input type="hidden" name="_method" value="post">
+                <!-- 1 name--->
+                <div class="row mb-2">
+                    <label for="name" class="col-sm-2 col-form-label">Name :</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" name="name" value="{{problem.name}}">
+                    </div>
+                </div>
+                <!-- 2 Phone --->
+                <div class="row mb-2">
+                    <label for="phone" class="col-sm-2 col-form-label">Phone :</label>
+                    <div class="col-sm-10">
+                        <input type="tel" class="form-control" id="phone" name="phone" value="{{problem.phone}}">
+                    </div>
+                </div>
+                <!-- 3 case --->
+                <div class="row mb-2">
+                    <label for="case" class="col-sm-2 col-form-label">Case :</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="case" name="case">
+                            <option value="Normal" {{#if (eq student.case 'Normal' )}}selected{{/if}}>Normal
+                            </option>
+                            <option value="Worst" {{#if (eq student.case 'Worst' )}}selected{{/if}}>
+                                Worst
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 4 grade --->
+                <div class="row mb-2">
+                    <label for="grade" class="col-sm-2 col-form-label">Grade :</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="grade" name="grade">
+                            <option value="kg-1" {{#if (eq student.grade 'kg-1' )}}selected{{/if}}>kg-1</option>
+                            <option value="kg-2" {{#if (eq student.grade 'kg-2' )}}selected{{/if}}>kg-2</option>
+                            <option value="kg-3" {{#if (eq student.grade 'kg-3' )}}selected{{/if}}>kg-3</option>
+                            <option value="1" {{#if (eq student.grade '1' )}}selected{{/if}}>1</option>
+                            <option value="2" {{#if (eq student.grade '2' )}}selected{{/if}}>2</option>
+                            <option value="3" {{#if (eq student.grade '3' )}}selected{{/if}}>3</option>
+                            <option value="4" {{#if (eq student.grade '4' )}}selected{{/if}}>4</option>
+                            <option value="5" {{#if (eq student.grade '5' )}}selected{{/if}}>5</option>
+                            <option value="6" {{#if (eq student.grade '6' )}}selected{{/if}}>6</option>
+                            <option value="7" {{#if (eq student.grade '7' )}}selected{{/if}}>7</option>
+                            <option value="8" {{#if (eq student.grade '8' )}}selected{{/if}}>8</option>
+                            <option value="9" {{#if (eq student.grade '9' )}}selected{{/if}}>9</option>
+                            <option value="10" {{#if (eq student.grade '10' )}}selected{{/if}}>10</option>
+                            <option value="11" {{#if (eq student.grade '11' )}}selected{{/if}}>11</option>
+                            <option value="12" {{#if (eq student.grade '12' )}}selected{{/if}}>12</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 5 problem--->
+                <div class="row mb-2">
+                    <label for="body" class="col-sm-6 col-form-label">Tell Us student problem:</label>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="body" name="body">{{problem.body}}</textarea>
+                    </div>
+                </div>
+
+                <!-- 6 Action--->
+                <div class="mb-2" style="padding-left: 15%;">
+                    <input type="submit" value="Save" class="btn btn-primary">
+                    <a href="/problems" class="btn btn-warning">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

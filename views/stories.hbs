@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css"
+        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Story Page</title>
+</head>
+
+<body>
+
+    <div class="w-100" style="z-index: 100; position: fixed;">
+        {{> _storyheader}}
+    </div>
+    <div>
+        {{> _add_btn}}
+    </div>
+
+    <!-- body -->
+    <div style="padding-top: 100px; padding-left: 60px; padding-right: 60px; padding: 40px;">
+        <h3 style="padding-top: 45px; padding-left: 38px;">Welcome {{name}}</h3>
+        <p style="padding-left: 90px;">Here are your stories</p>
+
+        {{#if story}}
+        {{! Define variables to store counts }}
+        {{#with (hash PublicCount=0 PrivateCount=0)}}
+
+        {{!-- Loop through each story --}}
+        {{#each story as |row index|}}
+
+        {{!-- Check the status and increment the corresponding count --}}
+        {{#if (eq row.status 'Public')}}
+        {{#with (hash PublicCount=(inc PublicCount))}}
+        {{/with}}
+        {{else}}
+        {{#with (hash PrivateCount=(inc PrivateCount))}}
+        {{/with}}
+        {{/if}}
+
+        {{/each}}
+
+        {{!-- Display the counts --}}
+        <p>Public: {{PublicCount}}</p>
+        <p>Private: {{PrivateCount}}</p>
+
+        {{/with}}
+        {{else}}
+        <p>No story Added yet</p>
+        {{/if}}
+
+        <!-- Your existing table code -->
+        <table class="table table-striped w-100 table-responsive" id="data_story">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each story as |row index| }}
+                <tr style="text-align:center;">
+                    {{!-- 1 index --}}
+                    <td style="padding: 2px;">{{index}}</td>
+
+                    {{!-- 2 image --}}
+                    <td style="padding: 2px;">
+                        {{#if row.imageBase64}}
+                        <img src='data:{{row.contentType}};base64,{{row.imageBase64}}' width="50" class="story image">
+                        {{else}}
+                        <img src="images/no_image.png" width="50" class="img-thumbnail">
+                        {{/if}}
+                    </td>
+                    {{!-- 3 title --}}
+                    <td style="padding: 2px;">{{row.title}}</td>
+                    {{!-- 4 Body --}}
+                    <td class="card-body card-text text-center">
+                        <p class="card-title">{{stripTags (truncate row.body 50)}}</p>
+                    </td>
+                    {{!-- 5 Status --}}
+                    <td style="padding: 2px; 
+                            {{#eq row.status 'Public'}}background-color: #d8d8d8;
+                            {{else}}background-color:  #fcede6;
+                            {{/eq}}">
+                        <span class="dash-status">{{row.status}}</span>
+                    </td>
+                    {{!-- 6 Date --}}
+                    <td style="padding: 2px;">{{formatDate row.createdAt 'MMMM Do YYYY, h:mm:ss a'}} </td>
+                    {{!-- 7 Action --}}
+                    <td style="padding: 2px;">
+                        <div style="display: grid; gap: 2x; grid-template-columns: repeat(3, 1fr)">
+                            <div>
+                                <a href="/story/{{row._id}}" class="btn p-2 btn-float  text-primary">
+                                    <i class="fas fa-eye fa-lg mx-1" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="/story/edit/{{row._id}}" class="btn p-2 btn-float  text-success">
+                                    <i class="fas fa-edit fa-lg mx-1"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <form action="/story/{{row._id}}" method="POST" id="delete-form">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn text-danger">
+                                        <i class="fas fa-trash fa-lg mx-1"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

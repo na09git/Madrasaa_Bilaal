@@ -1,0 +1,81 @@
+<title>Student Problem Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css"
+    integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="w-100" style="z-index: 100; position: fixed; ">
+    {{> _problemheader}}
+</div>
+<div>
+    {{> _createproblem}}
+</div>
+
+<div style="padding: 60px;">
+    <h3 style="padding-top: 55px; padding-left: 38px;">Welcome {{name}}</h3>
+
+    {{#if problem}}
+    {{! Your existing table code }}
+    <table class="table table-striped w-100 table-responsive " id="data_problem">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th class="text-center">Name</th>
+                <th>phone</th>
+                <th class="text-center">body</th>
+                <th>Grade</th>
+                <th>Case</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each problem as |row index|}}
+            <tr>
+                <td style="padding: 2px;" class="text-center">{{index}}</td>
+                {{!-- 1 Name --}}
+                <td style="padding: 2px;"><a href="/problem/{{row._id}}">{{row.name}}</a></td>
+                {{!-- 2 phone --}}
+                <td style="padding: 2px;"><a href="/problem/{{row._id}}">{{row.phone}}</a></td>
+                {{!-- 3 problem --}}
+                <td class="card-body card-text text-center">
+                    <p class="card-title">{{stripTags (truncate row.body 45)}}</p>
+                </td>
+                {{!-- 4 grade --}}
+                <td style="padding: 2px;" class="text-center"><span class="dash-grade ">{{row.grade}}</span></td>
+                {{!-- 5 case --}}
+                <td style="padding: 1px; 
+                {{#eq row.case 'Normal'}}background-color: #9EE47E;
+                {{else}}background-color: 	#FF3232;
+                {{/eq}}">
+                    <span class="dash-gender" class="text-center">{{row.case}}</span>
+                </td>
+                {{!-- 6 Date --}}
+                <td style="padding: 2px;" class="text-center">{{formatDate row.createdAt 'MMMM Do YYYY, h:mm:ss a'}}
+                </td>
+                <td style="padding: 2px;">
+                    <div style="display: grid; gap: 10px; grid-template-columns: repeat(2, 1fr)">
+                        <div>
+                            <a href="/problem/edit/{{row._id}}" class="btn p-2 btn-float  text-success">
+                                <i class="fas fa-edit fa-lg mx-1"></i>
+                            </a>
+                        </div>
+                        <div>
+                            <form action="/problem/{{row._id}}" method="POST" id="delete-form">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn text-danger">
+                                    <i class="fas fa-trash fa-lg mx-1"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    {{else}}
+    <p>No Problem in Our School !</p>
+    {{/if}}
+</div>

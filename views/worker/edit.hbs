@@ -1,0 +1,118 @@
+<div class="w-100" style="z-index: 99; ">
+    {{> _workerheader}}
+</div>
+
+<div class="container row " style="padding-top: 25px; padding-right:10%; padding-left:310px;">
+    <div class=" bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
+        style="padding-top: 20px; padding-right:10%; padding-left:10%;">
+
+        <div class="row text-center" style="align-items: center;">
+            <h3 class="bg-primary p-1" style="--bs-bg-opacity: .2; padding-left: 40px; padding-top: 70px;">
+                Edit Worker Information</h3>
+        </div>
+
+        <div class="row " style="padding-left: 10px;">
+            <form action="/worker/{{worker._id}}" method="POST" class="col-md-8 col-lg-8" enctype="multipart/form-data">
+                <input type="hidden" name="_method" value="post">
+                <!-- 1 Name--->
+                <div class="mb-2 row" style="padding-top:20px;">
+                    <div class="col-3">
+                        <label for="name" class="form-label"> Name :</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="title" name="name" value="{{worker.name}}">
+                    </div>
+
+                </div>
+                <!-- 2 Email--->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="title" class="form-label">Email </label>
+                    </div>
+                    <div class="col">
+                        <input type="email" class="form-control" id="email" name="email" value="{{worker.email}}">
+                    </div>
+                </div>
+                <!-- 3 Phone --->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="phone" class="form-label">Phone :</label>
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control " id="phone" name="phone" value="{{worker.phone}}">
+                    </div>
+                </div>
+                <!-- 4. Position -->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="position" class="form-label">Position</label>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" id="position" name="position">
+                            <option value="Teacher" {{#if (eq worker.position 'Teacher' )}}selected{{/if}}>Teacher
+                            </option>
+                            <option value="Manager" {{#if (eq worker.position 'Manager' )}}selected{{/if}}>Manager
+                            </option>
+                            <option value="Ustaz" {{#if (eq worker.position 'Ustaz' )}}selected{{/if}}>Ustaz</option>
+                            <option value="Cleaner" {{#if (eq worker.position 'Cleaner' )}}selected{{/if}}>Cleaner
+                            </option>
+                            <option value="Security" {{#if (eq worker.position 'Security' )}}selected{{/if}}>Security
+                            </option>
+                            <option value="Driver" {{#if (eq worker.position 'Driver' )}}selected{{/if}}>Driver</option>
+                            <option value="Cashier" {{#if (eq worker.position 'Cashier' )}}selected{{/if}}>Cashier
+                            </option>
+                            <option value="Director" {{#if (eq worker.position 'Director' )}}selected{{/if}}>Director
+                            </option>
+                            <option value="IT-Technician" {{#if (eq worker.position 'IT-Technician' )}}selected{{/if}}>
+                                IT-Technician</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <!-- 5 Salary --->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="title" class="form-label">Salary</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control " id="salary" name="salary" value="{{worker.salary}}">
+                    </div>
+                </div>
+                <!-- 6 gender --->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="gender" class="form-label">Gender :</label>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" id="gender" name="gender">
+                            <option value="M" {{#if (eq worker.gender 'M' )}}selected{{/if}}>M</option>
+                            <option value="F" {{#if (eq worker.gender 'F' )}}selected{{/if}}>F</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 7 Image--->
+                <div class="mb-2 row">
+                    <div class="col-3">
+                        <label for="image" class="form-label">Change Image :</label>
+                    </div>
+                    <div class="col">
+                        <input type="file" class="form-control" id="image" name="image">
+                        {{#if worker.imageBase64}}
+                        <img src='data:{{worker.contentType}};base64,{{worker.imageBase64}}' alt="{{worker.name}}"
+                            width="100">
+                        {{else}}
+                        <img src="images/no_image.png" alt="{{student.image}}" width="100" class="img-thumbnail">
+                        {{/if}}
+                    </div>
+                </div>
+                <!-- 8 Action--->
+                <div class="mb-2" style="padding-left: 120px;">
+                    <input style="padding-left: 10%; padding-right: 10%;" type="submit" value="Save"
+                        class="btn btn-primary">
+                    <a style="padding-left: 10%; padding-right: 10%;" href="/workers" class="btn btn-warning">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

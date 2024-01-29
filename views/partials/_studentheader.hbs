@@ -1,0 +1,101 @@
+<title>Student Management</title>
+<link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.css" rel="stylesheet">
+<div class="w-100" style="width: auto;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a href="/students" class="navbar-brand">
+                <img width="40" height="40" src="https://img.icons8.com/color/48/students.png" alt="students" />
+                Our Students
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-nav"
+                aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="my-nav" class="collapse navbar-collapse">
+                <div class="col navbar-text mx-2">
+                    <a class="btn btn-info" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        <img width="30" height="25" src="https://img.icons8.com/ios/50/000000/xbox-menu.png"
+                            alt="xbox-menu" />
+                    </a>
+                </div>
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item"><a href="/students" class="nav-link">
+                            <i class="fas fa-code me-1"></i> Students</a></li>
+                    <li class="nav-item active">
+                        <a href="/student/addstudent" class="nav-link">
+                            <i class="fas fa-user-plus me-1"></i>
+                            Add Student</a>
+                    </li>
+                    <li class="nav-item"><a href="/workers" class="nav-link">
+                            <i class="fas fa-code me-1"></i> Workers</a></li>
+                    <li class="nav-item active">
+                        <a href="/problems" class="nav-link"><i class="fas fa-globe me-1">
+                            </i>About Students</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="/" class="nav-link"><i class="fas fa-home me-1"></i>Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    {{!-- off-canvas -sidenav --}}
+    <div class="offcanvas sidenav offcanvas-start" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel" style="width: 35%;">
+        <div class="offcanvas-header">
+            <a href="#!" class="offcanvas-title text-decoration-none" id="offcanvasExampleLabel">Student Dashboard</a>
+            <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="col mt-2">
+                <table id="table_problem" class="table table-hover" width="50px">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img width="40" height="40"
+                                    src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/external-friends-user-tanah-basah-glyph-tanah-basah.png"
+                                    alt="external-friends-user-tanah-basah-glyph-tanah-basah" />
+                                <a href="/student" class="text-decoration-none"> Students </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img width="40" height="40" src="https://img.icons8.com/dotty/80/laptop-metrics--v3.png"
+                                    alt="laptop-metrics--v3" />
+                                <a href="/students" class="text-decoration-none">Students Dashboard</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <img width="35" height="35" src="https://img.icons8.com/ios/50/000000/exit--v1.png"
+                                    alt="exit--v1" />
+                                <a href="/auth/logout" class="text-decoration-none">Logout</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#data_student").DataTable({
+            order: [0, 'desc']
+        });
+    });
+</script>

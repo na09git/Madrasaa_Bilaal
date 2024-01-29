@@ -1,0 +1,39 @@
+<div style="z-index: 99;">
+    {{> _storyheader}}
+</div>
+
+<h3 class="mt-3" style="padding-left: 140px; ">Add Event</h3>
+<div class="row p-2 ">
+    <form action="/story" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+
+        <!--- 1 title --->
+        <div class="mb-1 col-md-4 col-lg-2 col-xl-4 mx-auto">
+            <label for="title" class="form-label" required>Title :</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="title">
+        </div>
+
+        <!--- 2 status --->
+        <div class="mb-1 col-md-4 col-lg-2 col-xl-4 mx-auto ">
+            <label for="status" class="form-label">Status :</label>
+            <select class="form-select" id="status" name="status">
+                <option value="Public" selected>Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+        <!--- 3 Image --->
+        <div class="mb-1 col-md-4 col-lg-6 col-xl-4 mx-auto">
+            <label for="image" class="form-label">Select Image :</label>
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+        <!--- 4 body--->
+        <div class="mb-1 col-md-4 col-lg-2 col-xl-6 mx-auto">
+            <label for="body" class="form-label">Story body :</label>
+            <textarea class="form-control" id="body" name="body" required></textarea>
+        </div>
+        <!--- 8 Action --->
+        <div class="mb-3 col-md-6 col-lg-2 col-xl-4 mx-auto" style="padding-top: 10px;">
+            <button type="submit" class="btn btn-primary">Add </button>
+            <a href="/story" class="btn btn-warning">Cancel</a>
+        </div>
+    </form>
+</div>

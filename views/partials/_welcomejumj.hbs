@@ -1,0 +1,126 @@
+<!-- Custom CSS link -->
+<style>
+    /* Override Bootstrap styles for your specific design */
+    .container-fluid {
+        padding: 0;
+    }
+
+    /* Adjustments for smaller screens */
+    @media (max-width: 767px) {
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row .image img {
+            width: 100%;
+            /* Make the image responsive */
+            max-width: 300px;
+            /* Set a maximum width for smaller screens */
+            height: auto;
+        }
+    }
+
+    /* Your existing styles */
+    .sidebar {
+        justify-content: space-between;
+        padding: 13px 5%;
+        background: var(--bg-color);
+        overflow-y: auto;
+        align-self: flex-start;
+        margin-bottom: 10px;
+        padding-bottom: 40px;
+    }
+
+    #home {
+        background-image: linear-gradient(rgba(9, 5, 54, 0.3), rgba(5, 4, 46, 0.7), url("images/back.PNG"));
+        width: 100%;
+        height: 70vh;
+        background-size: cover;
+        background-position: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 120px;
+    }
+
+    #home h2 {
+        color: blueviolet;
+        font-size: 1.9rem;
+        line-height: 25px;
+    }
+
+    #home p {
+        width: 60%;
+        color: blueviolet;
+        font-size: 1.9rem;
+        line-height: 25px;
+        margin-top: 1rem;
+    }
+
+    #home .btn {
+        margin-top: 30px;
+    }
+
+    #home a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 13px 35px;
+        background-color: rgb(11, 10, 10);
+        font-weight: 600;
+        border-radius: 5px;
+    }
+
+    #home a.blue {
+        color: #fffffd;
+        background: rgba(21, 21, 100);
+        transition: 0.3s ease;
+    }
+
+    #home a.blue:hover {
+        color: rgba(21, 21, 100);
+        background: #fff;
+    }
+
+    #home a.yellow {
+        color: #fffffd;
+        background: #FDC938;
+    }
+
+    #home a.yellow:hover {
+        color: rgba(21, 21, 100);
+        background: #fff;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="sidebar">
+                <img src="/images/favicon_io/melka.png" class="img-fluid"
+                    style="padding-top:80px ; height:300px; width:300px;">
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <section class="col" id="home">
+                <div>
+                    <h3>Welcome to Melka Walini School</h3>
+                    <h6> MWS , is committed to ensuring that all students learn and engage at the highest levels. By
+                        providing a Highly Effective and Learning Progressive education, MWS not only ensures that
+                        students
+                        succeed in meeting high academic standards but also experience opportunities to apply their
+                        learning in
+                        authentic and meaningful ways.
+
+                    </h6>
+                </div>
+                <div>
+                    <a class="btn btn-primary blue" href="/news">What's New</a>
+                    <a class="btn btn-warning yellow" href="#jamaa_works">Visit the School Works</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
