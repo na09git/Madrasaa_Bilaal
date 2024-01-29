@@ -78,8 +78,6 @@ app.set('view engine', '.hbs')
 // ...
 // home render
 app.get('/', function (req, res) {
-
-
   res.render('home', { layout: false });
   console.log("You are in home+++++++ Page !")
 });
