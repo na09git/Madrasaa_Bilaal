@@ -145,7 +145,7 @@ app.use(function (req, res, next) {
 
 // Static folder
 // The express.static middleware should be placed before other middleware or route handlers that might need to handle specific routes. 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'assets')))
 app.use(express.static(path.join(__dirname, 'uploadstory', 'uploadsnews', 'uploadstudent', 'uploadworker')))
 
 // Routes
