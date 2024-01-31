@@ -1,142 +1,125 @@
-<title>News Page</title>
-<div class="w-100" style="position: fixed; z-index: 100;">
-    {{> _newsheader}}
-</div>
+<main id="main">
 
-<div class="container" style="padding-top: 90px; padding-left: 70; padding-right: 40;">
-    <div class="row">
-        <div class="col-md-3">
-            <h3 class="display-6" style="padding-top: 35px; padding-bottom: 20px; padding-left: 30px;">News</h3>
-        </div>
-
-        <div class="col-md-6">
-            <form id="search-site" action='/news/search/:query' method='get' class="mb-4">
-                <div class="input-group" style="padding-top: 30px;">
-                    <span class="input-group-text"><i class="fas fa-search fa-lg"></i></span>
-                    <div class="form-floating">
-                        <input id="search" type="search" name='query' class="form-control"
-                            placeholder="Search by title">
-                        <label for="search">Search</label>
+    <!-- ====== Breadcrumbs ====== -->
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center" style="background-image: url('');">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>News</h2>
+                        <p>You can get new update about our school here .</p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
-            </form>
+            </div>
         </div>
+        <nav>
+            <div class="container">
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>News</li>
+                    <div class="col-md-6 w-100">
 
-        <div class="col-md-3" style="padding-top: 42px;">
-            <a href="/news/create" class="btn btn-primary">Broadcast News</a>
-        </div>
+                        {{!-- search --}}
+                        <form id="search-site" action='/news/search/:query' method='get' class="row mb-4">
+                            <div class="col input-group" style="padding-top: 30px;">
+                                <span class="input-group-text"><i class="fas fa-search fa-lg"></i></span>
+                                <div class="form-floating">
+                                    <input id="search" type="search" name='query' class="form-control"
+                                        placeholder="Search by title">
+                                    <label for="search">Search</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            {{!-- Broadcast --}}
+                            <div class="col-md-3" style="padding-top: 42px;">
+                                <a href="/news/create" class="btn bg-primary text-white">Broadcast News</a>
+                            </div>
+                            {{!-- Broadcast --}}
+                        </form>
+                        {{!-- search --}}
+
+                    </div>
+                </ol>
+            </div>
+        </nav>
     </div>
+    <!--- End Breadcrumbs --->
 
-    <div class="row" style="padding: 40px;">
-        {{#each news as |row index| }}
-        <div class="col-md-12" style="margin-bottom: 300px;">
-            <div class="card mb-4" style="min-height: 200px; border: 0;">
 
-                <div class="card-img-top" style="float: right;">
-                    {{{editIcon1 user ../user _id}}}
-                </div>
+    <!-- ====== Blog Section ====== -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
 
-                <div class="text-center" style="padding-bottom: 30px;">
-                    <h5 class="card-title">{{title}}</h5>
-                </div>
-                <div class="container" style="height: 300px;">
-                    <div class="row">
-                        <div class="col-md-6" style="height: 300px;">
-                            <div class="card mb-3" style="height: 300px; border: 0;">
-                                {{#if imageBase64}}
-                                <img src='data:{{contentType}};base64,{{imageBase64}}' class="news-image img-fluid"
-                                    style="min-height: 200px;">
-                                {{else}}
-                                <img src="images/no_image.png" class="img-thumbnail img-fluid"
-                                    style="min-height: 200px;">
-                                {{/if}}
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="height: 300px;">
-                            <div class="card-body">
-                                <p class="card-text">{{stripTags (truncate row.body 200)}}</p>
-                            </div>
-                            <div class="card-footer text-center" style="padding-bottom: 30px;">
-                                <a href="/news/{{_id}}" class="btn btn-secondary">Read More</a>
-                            </div>
-                            <div class="card-footer text-center" style="padding-top: 10px;">
-                                <span style="padding-left: 40px;"> {{formatDate news.createdAt 'MMMM Do YYYY, h:mm:ss
-                                    a'}}</span>
-                            </div>
-                        </div>
+            <div class="row gy-4 posts-list">
 
+                {{#each news as |row index| }}
+                <div class="col-xl-4 col-md-6">
+                    {{!-- edit --}}
+                    <div class="card-img-top" style="float: right;">
+                        {{{editIcon1 user ../user _id}}}
                     </div>
+                    <article>
+
+                        <div class="post-img">
+                            {{#if imageBase64}}
+                            <img src='data:{{contentType}};base64,{{imageBase64}}' class="news-image img-fluid"
+                                style="min-height: 200px;">
+                            {{else}}
+                            <img src="images/no_image.png" class="img-thumbnail img-fluid" style="min-height: 200px;">
+                            {{/if}}
+
+                        </div>
+
+                        <p class="post-category">{{title}}</p>
+
+                        <h2 class="title">
+                            <a href="blog-details.html">
+                                <p class="card-text">{{stripTags (truncate row.body 200)}}</p>
+                            </a>
+                        </h2>
+
+                        <div class="d-flex align-items-center">
+
+                            <img src="{{story.user.image}}" alt="Story image of{{story.user.firstName}}"
+                                class="img-fluid post-author-img flex-shrink-0">
+                            <div class="post-meta">
+                                <p class="post-author-list"> {{story.user.firstName}} </p>
+                                <p class="post-date">
+                                    <time datetime="2022-01-01">
+                                        <div class="card-footer text-center" style="padding-top: 10px;">
+                                            <span style="padding-left: 40px;"> {{formatDate news.createdAt 'MMMM Do
+                                                YYYY, h:mm:ss a'}}</span>
+                                        </div>
+                                    </time>
+                                </p>
+                                <div class="card-footer text-center" style="padding-bottom: 30px;">
+                                    <a href="/news/{{_id}}" class="btn btn-secondary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </article>
                 </div>
+                {{else}}
+                <p class="col-12 text-center">No News to display</p>
+                {{/each}}
+                <!-- End post list item -->
+
 
             </div>
-            <br>
+
+            <!-- End blog posts list -->
+
+            <div class="blog-pagination">
+                <ul class="justify-content-center">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul>
+            </div><!-- End blog pagination -->
 
         </div>
-        {{else}}
-        <p class="col-12 text-center">No News to display</p>
-        {{/each}}
-    </div>
-</div>
+    </section><!-- End Blog Section -->
 
-<!-- Back-to-Top Button -->
-<a href=""><img id="btn-back-to-top" src="https://img.icons8.com/color/48/circled-up-2--v1.png"
-        alt="circled-up-2--v1" /></a>
-
-<!-- Back-to-Top Styles -->
-<style>
-    #btn-back-to-top {
-        z-index: 1;
-        position: fixed;
-        bottom: 40px;
-        right: 40px;
-        width: 60px;
-        height: 50px;
-        border: none;
-        border-radius: 50%;
-    }
-
-    .card {
-        border: none;
-        /* Remove border from cards */
-    }
-
-    .card-body {
-        min-height: 200px;
-        /* Set minimum height for card body */
-    }
-
-    .news-image {
-        min-height: 200px;
-        /* Set minimum height for news image */
-    }
-</style>
-
-<!-- Bootstrap and Font Awesome JS dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-xBqEnFk1TC+2s9wAeUnp76cCqA5IcMXYgRVNkd3LQ6ZXfJt3S2x82CUq3uSWq8J6"
-    crossorigin="anonymous"></script>
-
-<!-- Back-to-Top Script -->
-<script>
-    let mybutton = document.getElementById("btn-back-to-top");
-
-    window.onscroll = function () {
-        scrollFunction();
-    };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-    }
-
-    mybutton.addEventListener("click", backToTop);
-
-    function backToTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-</script>
+</main>
+<!-- End #main -->

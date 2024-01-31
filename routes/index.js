@@ -90,18 +90,6 @@ router.get('/newspage', ensureAuth, async (req, res) => {
   }
 })
 
-// @desc    contact
-// @route   GET /contact
-router.get('/contact', (req, res) => {
-  try {
-    res.render('contact')
-    console.log("You are in Contact Page !")
-  } catch (err) {
-    console.error(err)
-    res.render('error/500')
-  }
-})
-
 
 // @desc    Student
 // @route   GET /student
@@ -154,55 +142,6 @@ router.get('/problems', ensureAuth, ensureAdminOrWorker, async (req, res) => {
 })
 
 
-// @desc    amirdetail
-// @route   GET /amirdetail
-router.get('/directormessage', (req, res) => {
-  try {
-    res.render('directormessage')
-  } catch (err) {
-    console.error(err)
-    res.render('error/500')
-  }
-})
-
-
-// @desc    vission-and-mission
-// @route   GET /vission-and-mission
-router.get('/vission-and-mission', (req, res) => {
-  try {
-    res.render('vission-and-mission')
-  } catch (err) {
-    console.error(err)
-    res.render('error/500')
-  }
-})
-
-
-
-// @desc    privacy
-// @route   GET /privacy
-router.get('/privacy', async (req, res) => {
-  try {
-    res.render('privacy')
-    console.log("You are in privacy Page !");
-  } catch (err) {
-    console.error(err)
-    res.render('error/500')
-  }
-})
-
-
-// @desc    terms
-// @route   GET /terms
-router.get('/terms', async (req, res) => {
-  try {
-    res.render('terms')
-    console.log("You are in terms Page !");
-  } catch (err) {
-    console.error(err)
-    res.render('error/500')
-  }
-})
 
 
 module.exports = router

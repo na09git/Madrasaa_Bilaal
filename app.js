@@ -75,7 +75,6 @@ const hbs = exphbs.create({
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs')
 
-// ...
 // home render
 app.get('/', function (req, res) {
   res.render('home', { layout: false });
@@ -91,18 +90,14 @@ app.get('/', function (req, res) {
   res.render('homeworker', { layout: false });
   console.log("You are in homeWorker Page !")
 });
-
 // Routes News
 app.get('/', (req, res) => {
   res.render('newspage', { title: "News Page" }, { layout: false });
 });
-// Routes Contact _ Us Page
-app.get('/', (req, res) => {
-  res.render('contact', { title: "Contact Page" }, { layout: false });
-});
+
 // Routes amirdetail Page
 app.get('/', (req, res) => {
-  res.render('directormessage', { title: "Director'a Amir" }, { layout: false });
+  res.render('directormessage');
 });
 // Routes vission-and-mission Page
 app.get('/', (req, res) => {
@@ -162,7 +157,6 @@ app.use('/vission-and-mission', require('./routes/vission-and-mission'));
 app.use('/student', require('./routes/student'));
 app.use('/worker', require('./routes/worker'));
 app.use('/problem', require('./routes/problem'));
-app.use('/contact', require('./routes/contact'));
 app.use('/privacy', require('./routes/privacy'));
 app.use('/terms', require('./routes/terms'));
 

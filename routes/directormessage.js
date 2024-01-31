@@ -3,9 +3,9 @@ const passport = require('passport')
 const router = express.Router()
 
 // @route   GET /amirdetail
-router.get('/directormessage', (req, res) => {
+router.get('/', (req, res) => {
     try {
-        res.render('directormessage')
+        res.render('directormessage/index')
     } catch (err) {
         console.error(err)
         res.render('error/500')
