@@ -80,27 +80,39 @@ app.get('/', function (req, res) {
   res.render('home', { layout: false });
   console.log("You are in home+++++++ Page !")
 });
+// home render
+app.get('/home', function (req, res) {
+  res.render('home', { layout: false });
+  console.log("You are in home+++++++ Page !")
+});
 // homeadmin render
-app.get('/', function (req, res) {
+app.get('/homeadmin', function (req, res) {
   res.render('homeadmin', { layout: false });
   console.log("You are in homeAdmin Page !")
 });
 // homeproblem render
-app.get('/', function (req, res) {
+app.get('/homeworker', function (req, res) {
   res.render('homeworker', { layout: false });
   console.log("You are in homeWorker Page !")
 });
 // Routes News
-app.get('/', (req, res) => {
+app.get('/newspage', (req, res) => {
   res.render('newspage', { title: "News Page" }, { layout: false });
 });
-
+// Routes News
+app.get('/news/create', (req, res) => {
+  res.render('news/create');
+});
+// Routes contact Page
+app.get('/contact', (req, res) => {
+  res.render('contact');
+});
 // Routes amirdetail Page
-app.get('/', (req, res) => {
+app.get('/directormessage', (req, res) => {
   res.render('directormessage');
 });
 // Routes vission-and-mission Page
-app.get('/', (req, res) => {
+app.get('/vission-and-mission', (req, res) => {
   res.render('vission-and-mission', { title: "vission-and-mission" }, { layout: false });
 });
 // Routes students Page

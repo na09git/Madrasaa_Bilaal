@@ -1,156 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Bilal Madrasa </title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="/img/favicon/bilal16.png" rel="icon">
-    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
-    {{!-- font awesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Vendor CSS Files -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="/css/main.css" rel="stylesheet">
-</head>
-
-<body>
-    <!-- ======= Header ======= -->
-    <section id="topbar" class="topbar d-flex align-items-center">
-        <div class="container d-flex justify-content-center justify-content-md-between">
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope d-flex align-items-center"><a
-                        href="mailto:contact@example.com">niletech1513@gmail.com</a></i>
-                <a href="tel:+251919231818"><i class="bi bi-phone d-flex align-items-center ms-4"><span>+251
-                            915137219</span></i></a>
-            </div>
-            <div class="social-links d-none d-md-flex align-items-center">
-                {{!-- twitter --}}
-                <a href="https://twitter.com/binmhmd11" class="twitter">
-                    <i class="bi bi-twitter"></i></a>
-                {{!-- facebook --}}
-                <a href="https://facebook.com/binmhmd99/" class="facebook">
-                    <i class="bi bi-facebook"></i></a>
-                {{!-- email --}}
-                <a href="http://www.niletech1513@gmail.com">
-                    <i class="bi bi-envelope" aria-hidden="true"> </i>
-                </a>
-                {{!-- linkedin --}}
-                <a href="https://www.linkedin.com/in/anwar-mohammed" class="linkedin">
-                    <i class="bi bi-linkedin"></i></i></a>
-                {{!-- telegram --}}
-                <a href="https://t.me/binmhmd99" class="telegram">
-                    <i class="bi bi-telegram"></i></i></a>
-            </div>
+<h3 class="mt-3" style="padding-left: 140px; ">Create News</h3>
+<div class="row p-2 ">
+    <form action="/news" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <!--- 1 Image --->
+        <div class="mb-1 col-md-4 col-lg-6 col-xl-4 mx-auto">
+            <label for="image" class="form-label">Select Image</label>
+            <input type="file" class="form-control" id="image" name="image">
         </div>
-    </section><!-- End Top Bar -->
-
-    <header id="header" class="header d-flex align-items-center">
-
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="/" class="logo d-flex align-items-center">
-                <h1>Bilal Madrasa <span>.</span></h1>
-            </a>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/story">Events</a></li>
-                    <li><a href="/news">News</a></li>
-                    <li><a href="/vission-and-mission">vission-and-mission</a></li>
-                    <li><a href="/contact">Contact </a></li>
-                    <li> <a href="./login" class="nav-link">
-                            <button class="btn loginbtn rounded-pill"
-                                onclick="document.getElementById('login-form').style.display='block'"
-                                style="width:auto; 
-                        background-color: #fff;    padding-right: 3px; padding-left: 13px;    padding: 7px 17px;    border-radius: 20px;    color: #101C32;    transition: 0.4s ease-in-out;    text-decoration: none;    font-size: 0.9rem;    font-weight: 600;    border-radius: 5px;    border: 1px solid red;
-                            text-decoration: none;     color: #fff;    background: rgb(248, 47, 47);    transition: 0.3s ease;">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Login
-                            </button>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav><!-- .navbar -->
-
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
+        <!--- 2 title --->
+        <div class="mb-1 col-md-4 col-lg-2 col-xl-4 mx-auto">
+            <label for="title" class="form-label" required>Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="title">
         </div>
-    </header><!-- End Header -->
-    <!-- End Header -->
+        <!--- 3 body--->
+        <div class="mb-1 col-md-4 col-lg-2 col-xl-6 mx-auto">
+            <label for="body" class="form-label">News body</label>
+            <textarea class="form-control" id="body" name="body" required></textarea>
+        </div>
 
-
-
-
-    <h3 class="mt-3" style="padding-left: 140px; ">Create News</h3>
-    <div class="row p-2 ">
-        <form action="/news" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-            <!--- 1 Image --->
-            <div class="mb-1 col-md-4 col-lg-6 col-xl-4 mx-auto">
-                <label for="image" class="form-label">Select Image</label>
-                <input type="file" class="form-control" id="image" name="image">
-            </div>
-            <!--- 2 title --->
-            <div class="mb-1 col-md-4 col-lg-2 col-xl-4 mx-auto">
-                <label for="title" class="form-label" required>Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="title">
-            </div>
-            <!--- 3 body--->
-            <div class="mb-1 col-md-4 col-lg-2 col-xl-6 mx-auto">
-                <label for="body" class="form-label">News body</label>
-                <textarea class="form-control" id="body" name="body" required></textarea>
-            </div>
-
-            <!--- 8 Action --->
-            <div class="mb-3 col-md-6 col-lg-2 col-xl-4 mx-auto" style="padding-top: 10px; padding-left: 50px;">
-                <button type="submit" class="btn btn-primary">Broadcast </button>
-                <a href="/newspage" class="btn btn-warning">Cancel</a>
-            </div>
-        </form>
-    </div>
-
-
-
-
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/vendor/aos/aos.js"></script>
-    <script src="/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/vendor/php-email-form/validate.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="/js/main.js"></script>
-
-</body>
-
-</html>
+        <!--- 8 Action --->
+        <div class="mb-3 col-md-6 col-lg-2 col-xl-4 mx-auto" style="padding-top: 10px; padding-left: 50px;">
+            <button type="submit" class="btn btn-primary">Broadcast </button>
+            <a href="/newspage" class="btn btn-warning">Cancel</a>
+        </div>
+    </form>
+</div>

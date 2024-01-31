@@ -82,7 +82,6 @@ router.get('/', async (req, res) => {
             news,
         })
         console.log("News/index rendered");
-
         console.log("You can now see All News Here !");
     } catch (err) {
         console.error(err)

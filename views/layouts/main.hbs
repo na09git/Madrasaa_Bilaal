@@ -216,6 +216,15 @@
       plugins: 'wysiwygarea, toolbar,basicstyles,link'
     });
   </script>
+
+  <script>
+    $(document).ready(function () {
+      $("#data_story").DataTable({
+        order: [0, 'desc']
+      });
+    });
+  </script>
+
 </body>
 
 </html>

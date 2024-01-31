@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>NileTech</title>
+    <title>Bilal Madrasa </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/favicon/bilal16.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -19,6 +19,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+    {{!-- font awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Vendor CSS Files -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -62,41 +66,63 @@
                     <i class="bi bi-telegram"></i></i></a>
             </div>
         </div>
-    </section><!-- End Top Bar -->
+    </section>
+    <!-- End Top Bar -->
 
+    <!-- Start Header -->
     <header id="header" class="header d-flex align-items-center">
 
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="/img/logo.png" alt=""> -->
-                <h1>NileTech<span>.</span></h1>
+            <a href="/" class="logo d-flex align-items-center">
+                <h1>Bilal Madrasa <span>.</span></h1>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/story">Events</a></li>
                     <li><a href="/news">News</a></li>
                     <li><a href="/vission-and-mission">vission-and-mission</a></li>
-                    <li class="dropdown"><a href="#"><span>Drop Down</span> <i
+                    <li><a href="/contact">Contact </a></li>
+                    <li class="dropdown"><a href="#"><span>Manage</span> <i
                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+                            {{!-- Students --}}
+                            <li class="dropdown"><a href="#"><span>Student</span> <i
                                         class="bi bi-chevron-down dropdown-indicator"></i></a>
                                 <ul>
-                                    <li><a href="#">Worker Page</a></li>
-                                    <li><a href="#">Admin Page</a></li>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="/student/addstudent">Add Student</a></li>
+                                    <li><a href="/student">Student</a></li>
+                                    <li><a href="/students">Dashboard</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
+                            {{!-- Broadcast News --}}
+                            <li class="dropdown"><a href="#"><span> News</span> <i
+                                        class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="/news/broadcast">Broadcast News</a></li>
+                                    <li><a href="/news"> News</a></li>
+                                    <li><a href="/newspage">Dashboard</a></li>
+                                </ul>
+                            </li>
+                            {{!-- Workers --}}
+                            <li class="dropdown"><a href="#"><span>Workers</span> <i
+                                        class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="worker/addworker">Add Workers</a></li>
+                                    <li><a href="/worker"> Workers</a></li>
+                                    <li><a href="/workers">Dashboard</a></li>
+                                </ul>
+                            </li>{{!-- Problems --}}
+                            <li class="dropdown"><a href="#"><span>Problems</span> <i
+                                        class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                    <li><a href="problem/addproblem">Add Problems</a></li>
+                                    <li><a href="/problem"> Workers</a></li>
+                                    <li><a href="/problems">Dashboard</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="/contact">Contact </a></li>
                     <li> <a href="./login" class="nav-link">
                             <button class="btn loginbtn rounded-pill"
                                 onclick="document.getElementById('login-form').style.display='block'"
@@ -108,6 +134,7 @@
                             </button>
                         </a>
                     </li>
+                    <li><a href="/admin">Admin </a></li>
 
                 </ul>
             </nav><!-- .navbar -->
@@ -116,7 +143,7 @@
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
         </div>
-    </header><!-- End Header -->
+    </header>
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -182,6 +209,8 @@
         </div>
     </section>
     <!-- End Hero Section -->
+
+
 
     <main id="main">
 
