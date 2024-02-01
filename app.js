@@ -65,7 +65,8 @@ const hbs = exphbs.create({
     editIcon,
     editIcon1,
     select,
-  }, if: function (conditional, options) {
+  },
+  if: function (conditional, options) {
     return conditional ? options.fn(this) : options.inverse(this);
   },
   defaultLayout: 'main',
@@ -96,11 +97,11 @@ app.get('/homeworker', function (req, res) {
   console.log("You are in homeWorker Page !")
 });
 // Routes News
-app.get('/newspage', (req, res) => {
-  res.render('newspage', { title: "News Page" }, { layout: false });
+app.get('/create', (req, res) => {
+  res.render('news/create');
 });
 // Routes News
-app.get('/news/create', (req, res) => {
+app.get('/create', (req, res) => {
   res.render('news/create');
 });
 // Routes contact Page
@@ -109,22 +110,22 @@ app.get('/contact', (req, res) => {
 });
 // Routes amirdetail Page
 app.get('/directormessage', (req, res) => {
-  res.render('directormessage');
+  res.render('directormessage', { title: "Director Message" });
 });
-// Routes vission-and-mission Page
-app.get('/vission-and-mission', (req, res) => {
-  res.render('vission-and-mission', { title: "vission-and-mission" }, { layout: false });
+// Routes vission Page
+app.get('/vission', (req, res) => {
+  res.render('vission', { title: "vission" });
 });
 // Routes students Page
-app.get('/', (req, res) => {
+app.get('/students', (req, res) => {
   res.render('students', { title: "Students Page" }, { layout: false });
 });
 // Routes workers Page
-app.get('/', (req, res) => {
+app.get('/workers', (req, res) => {
   res.render('workers', { title: "Workers Page" }, { layout: false });
 });
 // Routes Problems Page
-app.get('/', (req, res) => {
+app.get('/problems', (req, res) => {
   res.render('problems', { title: "Problem Page" }, { layout: false });
 });
 
@@ -165,7 +166,7 @@ app.use('/homeadmin', require('./routes/homeadmin'))
 app.use('/homeworker', require('./routes/homeworker'))
 app.use('/contact', require('./routes/contact'));
 app.use('/directormessage', require('./routes/directormessage'));
-app.use('/vission-and-mission', require('./routes/vission-and-mission'));
+app.use('/vission-and-mission', require('./routes/vission'));
 app.use('/student', require('./routes/student'));
 app.use('/worker', require('./routes/worker'));
 app.use('/problem', require('./routes/problem'));

@@ -23,9 +23,12 @@ const upload = multer({ storage: storage });
 
 // @desc    Show add page
 // @route   GET /story/add
+// Inside your '/story/add' route
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('story/add')
-})
+  console.log('Reached /story/add route');
+  res.render('story/add');
+
+});
 
 
 // @desc Process add story form with image upload

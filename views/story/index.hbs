@@ -19,43 +19,62 @@
 </style>
 
 
-<div class="container " id="container_1" style="padding-bottom: 100px;padding-top: 100px; ">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="display-6" style="padding-top: 15px; padding-bottom: 10px; padding-left: 50px;">Friends
-                Events
-            </h3>
-            <button>
-                <a href="/story" class="text-decoration-none"><i class="fas fa-users  text-success"></i>
-                    Public Story </a>
-            </button>
-            <button>
-                <a href="/stories" class="text-decoration-none">
-                    <i class="fa fa-dashboard text-success"></i> Stories
-                    dashboard
-                </a>
-            </button>
-
-
-        </div>
-
-        <div class="col-md-12" style="padding-left: 20px;">
-            <form id="search-site" action='/story/search/:query' method='get' class="mb-4">
-                <div class="input-group" style="padding-top: 10px;">
-                    <span class="input-group-text"><i class="fas fa-search fa-lg"></i></span>
-                    <div class="form-floating">
-                        <input id="search" type="search" name='query' class="form-control"
-                            placeholder="Search by title">
-                        <label for="search">Search</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+<!-- ====== Breadcrumbs ====== -->
+<div class="breadcrumbs">
+    <div class="page-header d-flex align-items-center" style="background-image: url('');">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2>Friends Events</h2>
+                    <p>You can get Events of Bilal Family here </p>
+                    <p>Be part of them by sharing your Event Dear :{{name}}.</p>
                 </div>
-            </form>
-        </div>
-        <div class="col-md-6 text-center" style="padding-top: 12px; align-items:center;">
-            <a href="/story/add" class="btn btn-primary">Post Story</a>
+            </div>
+
+            <div class="col-md-3  text-center " style="padding-top: 42px; justify-content-center">
+                <a href="/stories" class="btn bg-primary text-white"> Stories
+                    dashboard</a>
+            </div>
         </div>
     </div>
+    <nav>
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>Events</li>
+                <div class="col-md-6 w-100">
+
+                    {{!-- search --}}
+                    <form id="search-site" action='/story/search/:query' method='get' class="row mb-4">
+                        <div class="col input-group" style="padding-top: 30px;">
+                            <span class="input-group-text"><i class="fas fa-search fa-lg"></i></span>
+                            <div class="form-floating">
+                                <input id="search" type="search" name='query' class="form-control"
+                                    placeholder="Search by title">
+                                <label for="search">Search</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                        {{!-- Broadcast --}}
+                        <div class="col-md-3" style="padding-top: 42px;">
+                            <a href="/story/add" class="btn bg-primary text-white">Post Story</a>
+                        </div>
+                        {{!-- Broadcast --}}
+                    </form>
+                    {{!-- search --}}
+
+                </div>
+            </ol>
+        </div>
+    </nav>
+</div>
+<!--- End Breadcrumbs --->
+
+
+
+
+
+<div class="container " id="container_1" style="padding-bottom: 100px;padding-top: 100px; ">
 
     <div class="row" style="padding: 40px; ">
         {{#each story as |row index| }}
