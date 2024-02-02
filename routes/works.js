@@ -4,13 +4,13 @@ const multer = require('multer');
 const fs = require('fs');
 const { ensureAuth, ensureAdmin } = require('../middleware/auth')
 
-const News = require('../models/News')
+const Works = require('../models/Works')
 
 
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploadsnews');
+        cb(null, 'uploadsworks');
     },
     filename: function (req, file, cb) {
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
@@ -21,14 +21,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // @desc    Show create page
-// @route   GET /news/create
+// @route   GET /works/create
 router.get('/create', ensureAuth, ensureAdmin, (req, res) => {
-    res.render('news/create')
+    res.render('works/create')
 })
 
 
-// @desc Process add News  form with image upload
-// @route POST /news
+// @desc Process add works  form with image upload
+// @route POST /works
 router.post('/', ensureAuth, ensureAdmin, upload.single('image'), async (req, res) => {
     try {
         const file = req.file;
@@ -42,7 +42,7 @@ router.post('/', ensureAuth, ensureAdmin, upload.single('image'), async (req, re
         const img = fs.readFileSync(file.path);
         const encode_image = img.toString('base64');
 
-        const newUpload = new News({
+        const newUpload = new Works({
             ...req.body,
             user: req.user.id,
             contentType: file.mimetype,
@@ -51,8 +51,8 @@ router.post('/', ensureAuth, ensureAdmin, upload.single('image'), async (req, re
 
         try {
             await newUpload.save();
-            res.redirect('/news');
-            console.log("New News with image/upload is Successfully  Broadcasted !");
+            res.redirect('/works');
+            console.log("New Works with image/upload is Successfully  Broadcasted !");
 
         } catch (error) {
             if (error.name === 'MongoError' && error.code === 11000) {
@@ -68,20 +68,20 @@ router.post('/', ensureAuth, ensureAdmin, upload.single('image'), async (req, re
 
 
 
-// @desc    Show all news
-// @route   GET /news
+// @desc    Show all works
+// @route   GET /works
 router.get('/', async (req, res) => {
     try {
-        const news = await News.find()
+        const works = await Works.find()
             .populate('user')
             .sort({ createdAt: -1 })
             .lean()
 
-        res.render('news/index', {
-            news,
+        res.render('works/index', {
+            works,
         })
-        console.log("News/index rendered");
-        console.log("You can now see All News Here !");
+        console.log("works/index rendered");
+        console.log("You can now see All works Here !");
     } catch (err) {
         console.error(err)
         res.render('error/500')
@@ -89,18 +89,18 @@ router.get('/', async (req, res) => {
 })
 
 
-// @desc    Show single news
-// @route   GET /news/:id
+// @desc    Show single works
+// @route   GET /works/:id
 router.get('/:id', async (req, res) => {
     try {
-        let news = await News.findById(req.params.id)
+        let works = await Works.findById(req.params.id)
             .populate('user')
             .lean()
 
-        res.render('news/show', {
-            news,
+        res.render('works/show', {
+            works,
         })
-        console.log("You can now see the news details");
+        console.log("You can now see the works details");
 
     } catch (err) {
         console.error(err)
@@ -111,22 +111,22 @@ router.get('/:id', async (req, res) => {
 
 
 // @desc    Show edit page
-// @route   GET /news/edit/:id
+// @route   GET /works/edit/:id
 router.get('/edit/:id', ensureAuth, ensureAdmin, async (req, res) => {
     try {
-        const news = await News.findOne({ _id: req.params.id }).lean()
+        const works = await Works.findOne({ _id: req.params.id }).lean()
 
-        if (!news) {
+        if (!works) {
             return res.render('error/404')
         }
 
-        if (news.user != req.user.id) {
-            res.redirect('/news')
+        if (works.user != req.user.id) {
+            res.redirect('/works')
         } else {
-            res.render('news/edit', {
-                news,
+            res.render('works/edit', {
+                works,
             })
-            console.log("You are in news edit page & can Edit this news");
+            console.log("You are in works edit page & can Edit this works");
         }
     } catch (err) {
         console.error(err)
@@ -137,23 +137,23 @@ router.get('/edit/:id', ensureAuth, ensureAdmin, async (req, res) => {
 
 
 // @desc Show Update page
-// @route POST /news/:id
+// @route POST /works/:id
 router.post('/:id', ensureAuth, ensureAdmin, upload.single('image'), async (req, res) => {
     try {
-        let news = await News.findById(req.params.id).lean();
+        let works = await Works.findById(req.params.id).lean();
 
-        if (!news) {
-            console.log('News not found');
+        if (!works) {
+            console.log('works not found');
             return res.render('error/404');
         }
 
-        if (String(news.user) !== req.user.id) {
+        if (String(works.user) !== req.user.id) {
             console.log('User not authorized');
-            return res.redirect('/news');
+            return res.redirect('/workss');
         }
 
         const file = req.file;
-        const existingImage = news.imageBase64;
+        const existingImage = works.imageBase64;
 
         let updatedFields = req.body;
 
@@ -168,20 +168,20 @@ router.post('/:id', ensureAuth, ensureAdmin, upload.single('image'), async (req,
         } else {
             updatedFields = {
                 ...updatedFields,
-                contentType: news.contentType,
+                contentType: works.contentType,
                 imageBase64: existingImage,
             };
         }
 
         // Use await here
-        news = await News.findOneAndUpdate(
+        works = await Works.findOneAndUpdate(
             { _id: req.params.id },
             updatedFields,
             { new: true, runValidators: true }
         );
 
-        console.log('News updated successfully');
-        res.redirect('/news');
+        console.log('works updated successfully');
+        res.redirect('/works');
     } catch (err) {
         console.error(err);
         return res.render('error/500');
@@ -191,23 +191,23 @@ router.post('/:id', ensureAuth, ensureAdmin, upload.single('image'), async (req,
 
 
 
-// @desc    Delete news
-// @route   DELETE /news/:id
+// @desc    Delete works
+// @route   DELETE /works/:id
 router.delete('/:id', ensureAuth, ensureAdmin, async (req, res) => {
     try {
-        let news = await News.findById(req.params.id).lean()
+        let works = await Works.findById(req.params.id).lean()
 
-        if (!news) {
+        if (!works) {
             return res.render('error/404')
         }
 
-        if (news.user != req.user.id) {
-            res.redirect('/newspage')
+        if (works.user != req.user.id) {
+            res.redirect('/workspage')
         } else {
-            await News.deleteOne({ _id: req.params.id })
-            res.redirect('/newspage')
+            await Works.deleteOne({ _id: req.params.id })
+            res.redirect('/workspage')
         }
-        console.log("News Deleted Successfully !");
+        console.log("works Deleted Successfully !");
 
     } catch (err) {
         console.error(err)
@@ -216,16 +216,16 @@ router.delete('/:id', ensureAuth, ensureAdmin, async (req, res) => {
 })
 
 
-// @desc    User news
-// @route   GET /news/user/:userId
+// @desc    User works
+// @route   GET /works/user/:userId
 router.get('/user/:userId', ensureAuth, ensureAdmin, async (req, res) => {
     try {
-        const news = await News.find({ user: req.params.userId, })
+        const works = await Works.find({ user: req.params.userId, })
             .populate('user')
             .lean()
 
-        res.render('news/index', {
-            news,
+        res.render('works/index', {
+            works,
         })
     } catch (err) {
         console.error(err)
@@ -233,16 +233,16 @@ router.get('/user/:userId', ensureAuth, ensureAdmin, async (req, res) => {
     }
 })
 
-//@desc Search news by title
-//@route GET /news/search/:query
+//@desc Search works by title
+//@route GET /works/search/:query
 router.get('/search/:query', async (req, res) => {
     try {
-        const news = await News.find({ title: new RegExp(req.query.query, 'i'), })
+        const works = await Works.find({ title: new RegExp(req.query.query, 'i'), })
             .populate('user')
             .sort({ createdAt: 'desc' })
             .lean()
-        res.render('news/index', {
-            news,
+        res.render('works/index', {
+            works,
         })
         console.log("Search is working !");
     } catch (err) {

@@ -1,0 +1,78 @@
+
+<div class="container" style="padding-top: 85px; padding-bottom: 30px;">
+    <div class="row">
+        {{!-- Left --}}
+        <div class="col-md-8" style="padding-right: 50px; padding-left: 50px;">
+            <div class="row">
+                <div class="col text-end">
+                    <h3>{{news.title}}</h3>
+                </div>
+
+                <div class="col">
+                    <a href="/news/edit/{{news._id}}" class="btn p-1 btn-float text-primary">
+                        <i class="fas fa-edit fa-2x mx-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-3 card news">
+                <div class="card-content">
+                    {{!-- Title --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Title :</span>
+                        <span style="padding-left: 40px;">{{news.title}}</span>
+                    </div>
+                    <hr>
+
+                    {{!-- Title --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ News Message :</span>
+                        <br>
+                        <span style="padding-left: 40px;">{{stripTags news.body}}</span>
+
+                    </div>
+                    <hr>
+                    {{!-- Broadcasted Date --}}
+                    <div class="p-2" style="padding-left: 50px;">
+                        <span>◇ Registered Date : </span>
+                        <span style="padding-left: 40px;"> {{formatDate news.createdAt 'MMMM Do YYYY, h:mm:ss
+                            a'}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {{!-- Right --}}
+        <div class="col-md-4" style="padding-left: 45px; padding-right: 45px; padding-top: 25px; ">
+            <div class="card text-center">
+                <div class="card-content">
+                    <div style="padding-top: 10px;">
+                        <span class="card-title">{{news.user.displayName}}</span>
+                    </div>
+
+                    <div style="padding: 7px;">
+                        {{#if news.imageBase64}}
+                        <img src='data:{{news.contentType}};base64,{{news.imageBase64}}'
+                            class="rounded-circle img-fluid img-small" alt="news image"
+                            style="height: 150px; width: 150px;">
+                        {{else}}
+                        <img src="images/no_image.png" style="width:150; height:150px;" class="img-thumbnail">
+                        {{/if}}
+                    </div>
+                </div>
+                <hr>
+
+                <div class="card-action" style="padding-bottom: 13px;">
+                    <button type="button" class="btn  btn-primary link-unstyled text-decoration-none"
+                        style="background-color: #3498db; border-color: #3498db; "
+                        onmouseover="this.style.backgroundColor='#2980b9'"
+                        onmouseout="this.style.backgroundColor='#3498db'"
+                        onclick="window.location.href='/news/user/{{news.user._id}}'">
+                        Contact Admin with {{news.user.firstName}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

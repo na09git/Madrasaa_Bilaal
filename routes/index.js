@@ -142,6 +142,22 @@ router.get('/problems', ensureAuth, ensureAdminOrWorker, async (req, res) => {
 })
 
 
+// @desc    works
+// @route   GET /work
+router.get('/works', ensureAuth, ensureAdminOrWorker, async (req, res) => {
+  try {
+    const works = await Works.find({ user: req.user.id }).lean()
+    res.render('works', {
+      name: req.user.firstName,
+      problem,
+    })
+    console.log("Dear Admin, You can see all Student Problem here in this Page !")
+  } catch (err) {
+    console.error(err)
+    res.render('error/500')
+  }
+})
+
 
 
 module.exports = router
