@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const fs = require('fs');
+const path = require('path')
 const { ensureAuth } = require('../middleware/auth');
 
 const Story = require('../models/Story')
@@ -24,11 +25,17 @@ const upload = multer({ storage: storage });
 // @desc    Show add page
 // @route   GET /story/add
 // Inside your '/story/add' route
-router.get('/add', ensureAuth, (req, res) => {
-  console.log('Reached /story/add route');
-  res.render('story/add');
 
+router.get('/add', ensureAuth, (req, res) => {
+  try {
+    console.log('Reached /story/add route');
+    res.render('story/add');
+  } catch (error) {
+    console.error('Error rendering template:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
+
 
 
 // @desc Process add story form with image upload

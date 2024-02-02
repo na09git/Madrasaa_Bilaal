@@ -27,7 +27,6 @@ router.get('/create', ensureAuth, ensureAdmin, (req, res) => {
 })
 
 
-
 // @desc Process add News  form with image upload
 // @route POST /news
 router.post('/', ensureAuth, ensureAdmin, upload.single('image'), async (req, res) => {

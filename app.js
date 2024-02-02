@@ -29,6 +29,11 @@ connectDB()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.use((req, res, next) => {
+  console.log(`${req.method}:${req.url}`);
+  next();
+})
+
 // Method overrides
 app.use(
   methodOverride(function (req, res) {
@@ -56,6 +61,7 @@ const {
   editIcon1,
   select,
 } = require('./helpers/hbs')
+const { request } = require('http')
 
 const hbs = exphbs.create({
   helpers: {
@@ -77,14 +83,17 @@ app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs')
 
 // home render
-app.get('/', function (req, res) {
+app.get('/', (request, response, next) => {
+  console.log("Before Fetching the ```````````` Home  Page````````````` !")
+  next();
+}, function (req, res) {
   res.render('home', { layout: false });
   console.log("You are in home+++++++ Page !")
 });
 // home render
 app.get('/home', function (req, res) {
   res.render('home', { layout: false });
-  console.log("You are in home+++++++ Page !")
+  console.log("You are in ///home<<<>>> Page !")
 });
 // homeadmin render
 app.get('/homeadmin', function (req, res) {
@@ -96,37 +105,27 @@ app.get('/homeworker', function (req, res) {
   res.render('homeworker', { layout: false });
   console.log("You are in homeWorker Page !")
 });
-// Routes News
-app.get('/create', (req, res) => {
-  res.render('news/create');
+
+// Routes newspage Page
+app.get('/newspage', (req, res) => {
+  res.render('newspage');
 });
-// Routes News
-app.get('/create', (req, res) => {
-  res.render('news/create');
-});
-// Routes contact Page
-app.get('/contact', (req, res) => {
-  res.render('contact');
-});
-// Routes amirdetail Page
-app.get('/directormessage', (req, res) => {
-  res.render('directormessage', { title: "Director Message" });
-});
+
 // Routes vission Page
 app.get('/vission', (req, res) => {
   res.render('vission', { title: "vission" });
 });
 // Routes students Page
 app.get('/students', (req, res) => {
-  res.render('students', { title: "Students Page" }, { layout: false });
+  res.render('students', { title: "Students Page" });
 });
 // Routes workers Page
 app.get('/workers', (req, res) => {
-  res.render('workers', { title: "Workers Page" }, { layout: false });
+  res.render('workers', { title: "Workers Page" });
 });
 // Routes Problems Page
 app.get('/problems', (req, res) => {
-  res.render('problems', { title: "Problem Page" }, { layout: false });
+  res.render('problems', { title: "Problem Page" });
 });
 
 
@@ -159,6 +158,7 @@ app.use(express.static(path.join(__dirname, 'uploadstory', 'uploadsnews', 'uploa
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/story', require('./routes/story'))
 app.use('/story', require('./routes/story'))
 app.use('/news', require('./routes/news'));
 app.use('/home', require('./routes/home'))
