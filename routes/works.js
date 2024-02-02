@@ -10,7 +10,7 @@ const Works = require('../models/Works')
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploadsworks');
+        cb(null, 'uploadworks');
     },
     filename: function (req, file, cb) {
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
