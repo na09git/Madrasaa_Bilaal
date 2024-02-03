@@ -159,5 +159,19 @@ router.get('/works', ensureAuth, ensureAdminOrWorker, async (req, res) => {
 })
 
 
+// @desc    works
+// @route   GET /work
+router.get('/storyadd', ensureAuth, ensureAdminOrWorker, async (req, res) => {
+  try {
+    const works = await Works.find({ user: req.user.id }).lean()
+    res.render('storyadd/add')
+    console.log("This is storyadd/add  Page !")
+  } catch (err) {
+    console.error(err)
+    res.render('error/500')
+  }
+})
+
+
 
 module.exports = router

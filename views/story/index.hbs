@@ -1,6 +1,6 @@
 <!-- ====== Breadcrumbs ====== -->
 <div class="breadcrumbs">
-  <div class="page-header d-flex align-items-center" style="background-image: url('');">
+  <div class="page-header d-flex align-items-center">
     <div class="container position-relative">
       <div class="row d-flex justify-content-center">
         <div class="col-lg-6 text-center">
@@ -16,6 +16,7 @@
       </div>
     </div>
   </div>
+
   <nav>
     <div class="container">
       <ol>
@@ -50,64 +51,60 @@
 
 
 
-
-
-
 <main id="main">
-
   <!-- ======= Blog Section ======= -->
   <section id="blog" class="blog">
-    <div class="container" data-aos="fade-up">
-
-      <div class="row gy-4 posts-list">
-        {{#each story as |row index| }}
-
-        <div class="col-xl-4 col-md-6">
-          <article>
+    <div class="container" data-aos="fade-up" style="height: auto;">
+      {{#each story as |row index| }}
+      <div class="row gy-6 posts-list d-flex justify-content-center">
+        <div class="col-xl-7 col-md-8">
+          <article style="max-height: 1000px; overflow: hidden;">
             {{!-- Author --}}
             <div class="d-flex align-items-center">
               {{!-- Circle image of poster--}}
               <img src="{{user.image}}" alt=" image of {{user.image}}" class="img-fluid post-author-img flex-shrink-0">
-              <div class="post-meta">
+              <div class="post-meta row w-100">
                 {{!-- firstName --}}
-                <a style="text-decoration: none; width:100px; height:15px;  background-color:#f2ebeb; border-radius:20px; padding-top:6px; padding-bottom:8px; padding-left:20px; padding-right:20px;"
-                  href="mailto: {{user.email}}" class="chip-link">
-                  <p class="post-author-list">{{user.firstName}}</p>
-                </a>
+                <div class="col-3">
+                  <a style="text-decoration: none;" href="mailto: {{user.email}}" class="chip-link ">
+                    <p class="post-author-list">{{user.firstName}}</p>
+                  </a>
+                </div>
                 {{!-- Posted Date --}}
-                <p class="post-date">
-                  <time datetime="2022-01-01"> {{formatDate story.createdAt 'MMMM Do YYYY, h:mm:ss
-                    a'}}</time>
+                <p class="post-date col w-100">
+                  <time datetime="2022-01-01"> {{formatDate story.createdAt 'MMMM Do YYYY, h:mm:ss a'}}</time>
                 </p>
               </div>
             </div>
             {{!-- title --}}
-            <p class="post-category">{{title}}</p>
+            <p class="post-category" style="padding-top: 15px;">{{title}}</p>
             {{!-- Body --}}
-            <h2 class="title">
-              <a href="blog-details.html">
+            <h6 class="title" style="padding-bottom: 10px;">
+              <a href="/story/{{row._id}}">
                 <p>{{stripTags (truncate body 250)}}</p>
               </a>
-            </h2>
+            </h6>
             {{!-- image --}}
-            <div class="post-img">
-              {{!-- <img src='data:{{contentType}};base64,{{imageBase64}}' width="auto" height="400"
-                class="story image"> --}}
-
-              <img src="data:{{contentType}};base64,{{imageBase64}}" alt="story image" class="img-fluid">
+            <div class="post-img" style="object-fit: cover; height: 660%;">
+              <img src="data:{{contentType}};base64,{{imageBase64}}" width="100%" style="height: 100%;"
+                alt="story image" class="img-fluid">
+            </div>
+            {{!-- Read More --}}
+            <div class="card-footer text-center ">
+              <a href="/story/{{row._id}}" class="btn btn-secondary">Read More</a>
             </div>
           </article>
-          <div class="card-footer text-center">
-            <a href="/story/{{row._id}}" class="btn btn-secondary">Read More</a>
-          </div>
         </div>
         <!-- End post list item -->
-
-
-      </div><!-- End blog posts list -->
-
+      </div>
+      {{else}}
+      <p class="col-12 text-center">No Event posted yet .</p>
+      <p class="col-12 text-center">Be the first to post an Event !</p>
+      {{/each}}
     </div>
+    <!-- End blog posts list -->
   </section>
   <!-- End Blog Section -->
 
-</main><!-- End #main -->
+</main>
+<!-- End #main -->

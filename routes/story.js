@@ -22,10 +22,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
+
 // @desc    Show add page
 // @route   GET /story/add
 // Inside your '/story/add' route
-
 router.get('/add', ensureAuth, (req, res) => {
   try {
     console.log('Reached /story/add route');
@@ -76,6 +76,8 @@ router.post('/', ensureAuth, upload.single('image'), async (req, res) => {
     res.status(400).json({ error: err.message || 'Internal Server Error' });
   }
 });
+
+
 
 
 // @desc Show all story

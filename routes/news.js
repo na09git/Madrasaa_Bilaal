@@ -10,7 +10,7 @@ const News = require('../models/News')
 // Set up multer storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploadsnews');
+        cb(null, 'uploadnews');
     },
     filename: function (req, file, cb) {
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));

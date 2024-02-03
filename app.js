@@ -129,6 +129,8 @@ app.get('/problems', (req, res) => {
 });
 
 
+
+
 const sessionStore = new MongoStore({ mongooseConnection: mongoose.connection });
 // Sessions
 app.use(
@@ -153,7 +155,7 @@ app.use(function (req, res, next) {
 // Static folder
 // The express.static middleware should be placed before other middleware or route handlers that might need to handle specific routes. 
 app.use(express.static(path.join(__dirname, 'assets')))
-app.use(express.static(path.join(__dirname, 'uploadstory', 'uploadsnews', 'uploadstudent', 'uploadworker', 'uploadworks')))
+app.use(express.static(path.join(__dirname, 'uploadstory', 'uploadsnews', 'uploadstudent', 'uploadworker')))
 
 // Routes
 app.use('/', require('./routes/index'))
@@ -171,6 +173,7 @@ app.use('/worker', require('./routes/worker'));
 app.use('/problem', require('./routes/problem'));
 app.use('/privacy', require('./routes/privacy'));
 app.use('/terms', require('./routes/terms'));
+// app.use('/email', require('./routes/email'));
 
 
 const PORT = process.env.PORT || 3000

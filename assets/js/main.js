@@ -11,16 +11,39 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Preloader
    */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
+  let contentLoaded = false; //new  Flag to track whether the main content is loaded
+
+  // Function to hide the preloader
+  const hidePreloader = () => {
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
       preloader.remove();
-    });
-  }
+    }
+  };
+
+  // Function to check if both steps are completed
+  const checkLoadingCompletion = () => {
+    console.log('Checking loading completion');
+    if (contentLoaded) {
+      hidePreloader();
+    }
+  };
+
+  // Event listener for DOMContentLoaded to set contentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    contentLoaded = true;
+    checkLoadingCompletion();
+  });
+
+  // Event listener for window load to set contentLoaded
+  window.addEventListener('load', () => {
+    contentLoaded = true;
+    checkLoadingCompletion();
+  });
 
   /**
-   * Sticky Header on Scroll
-   */
+  * Sticky Header on Scroll
+  */
   const selectHeader = document.querySelector('#header');
   if (selectHeader) {
     let headerOffset = selectHeader.offsetTop;
