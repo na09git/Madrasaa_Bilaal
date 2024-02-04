@@ -129,8 +129,6 @@ app.get('/problems', ensureAdminOrWorker, (req, res) => {
 });
 
 
-
-
 const sessionStore = new MongoStore({ mongooseConnection: mongoose.connection });
 // Sessions
 app.use(
