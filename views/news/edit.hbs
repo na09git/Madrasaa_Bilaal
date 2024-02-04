@@ -1,6 +1,24 @@
-<div class="container row " style="padding-top: 7%; padding-bottom: 2%; padding-right:10%; padding-left:310px;">
+<style>
+    @media only screen and (max-width: 700px) {
+
+        #container_edit {
+            padding-left: 20px;
+            padding-right: 40px;
+        }
+    }
+
+    @media only screen and (min-width: 701px) {
+
+        #container_edit {
+            padding-left: 300px;
+            padding-right: 150px;
+        }
+    }
+</style>
+
+<div class="container row" id="container_edit" style="padding-top: 20px; padding-bottom: 15px; width:auto;">
     <div class=" bg-info bg-opacity-10 border border-info border-start-0 rounded-end"
-        style="padding-top: 20px; padding-right:10%; padding-left:10%;">
+        style="padding-top: 20px; padding-right:5%; padding-left:5%;">
 
         <div class="row text-center" style="align-items: center;">
             <h3 class="bg-primary p-1" style="--bs-bg-opacity: .2; padding-left: 40px; padding-top: 70px;">
@@ -22,8 +40,8 @@
                 <div class="row mb-2">
                     <label for="body" class="col-sm-6 col-form-label">Tell Us student news:</label>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-sm-10">
+                <div class="row mb-2 w-100">
+                    <div>
                         <textarea class="form-control" id="body" name="body">{{news.body}}</textarea>
                     </div>
                 </div>
@@ -43,9 +61,11 @@
                     </div>
                 </div>
                 <!-- 6 Action--->
-                <div class="mb-2" style="padding-left: 15%;">
-                    <input type="submit" value="Save" class="btn btn-primary">
-                    <a href="/news" class="btn btn-warning">Cancel</a>
+                <div class="mb-2" style="padding-left: 120px;">
+                    <input style="padding-left: 10%; padding-right: 10%;" type="submit" value="Save"
+                        class="btn btn-primary">
+                    <a style="padding-left: 10%; padding-right: 10%; padding-top:4%;" href="/news"
+                        class="btn btn-warning">Cancel</a>
                 </div>
             </form>
         </div>
