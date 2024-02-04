@@ -18,7 +18,7 @@ module.exports = {
 
   stripTags: function (input) {
     if (input) {
-      return input.replace(/<(?:.|\n)*?>/gm, '');
+      return input.replace(/<(?:.|\n)*?>/gm, '').replace(/&nbsp;|\s+/g, ' ').replace(/&amp;/g, '&');
     }
     return '';
   },

@@ -1,3 +1,10 @@
+<!-- Include jQuery -->
+<script src="path/to/jquery-3.6.4.min.js"></script>
+
+<!-- Include DataTables -->
+<script src="path/to/jquery.dataTables.min.js"></script>
+
+
 <div style="z-index: 100; position:fixed;">
     {{> _addnews_btn}}
 </div>
@@ -85,3 +92,13 @@
     {{/if}}
 
 </div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#data_news").DataTable({
+            order: [0, 'desc']
+        });
+    });
+
+</script>

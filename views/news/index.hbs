@@ -58,35 +58,48 @@
             <div class="row gy-4 posts-list">
 
                 {{#each news as |row index| }}
-                <div class="col-xl-4 col-md-6">
-                    {{!-- edit --}}
+                <div class="col-xl-12 col-md-6">
 
                     <article>
-
-                        <div class="post-img">
-                            {{#if imageBase64}}
-                            <img src='data:{{contentType}};base64,{{imageBase64}}' class="news-image img-fluid"
-                                style="min-height: 200px;">
-                            {{else}}
-                            <img src="images/no_image.png" class="img-thumbnail img-fluid" style="min-height: 200px;">
-                            {{/if}}
-
+                        <div class="text-center" style="padding-bottom: 30px;">
+                            <p class="post-category">{{title}}</p>
                         </div>
 
-                        <p class="post-category">{{title}}</p>
+                        <div class="container" style="height: 300px;">
+                            <div class="row">
+                                <div class="col-md-6" style="height: 300px;">
+                                    <div class="card mb-3" style="height: 300px; border: 0;">
+                                        {{#if imageBase64}}
+                                        <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                            class="news-image img-fluid" style="min-height: 200px;">
+                                        {{else}}
+                                        <img src="images/no_image.png" class="img-thumbnail img-fluid"
+                                            style="min-height: 200px;">
+                                        {{/if}}
+                                    </div>
+                                </div>
 
-                        <h2 class="title">
-                            <a href="blog-details.html">
-                                <p class="card-text">{{stripTags (truncate row.body 200)}}</p>
-                            </a>
-                        </h2>
+                                <div class="col-md-6" style="height: 300px;">
+                                    <div class="card-body title">
+                                        <a href="/news/{{_id}}">
+                                            <p class="card-text">{{stripTags (truncate row.body 200)}}</p>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
 
                         <div class="d-flex align-items-center">
 
-                            <img src="{{story.user.image}}" alt="Story image of{{story.user.firstName}}"
-                                class="img-fluid post-author-img flex-shrink-0">
+                            <a href="mailto: niletech1513@gmail.com"> <img src="{{user.image}}"
+                                    alt="Story image of{{user.firstName}}"
+                                    class="img-fluid post-author-img flex-shrink-0">
+                            </a>
                             <div class="post-meta">
-                                <p class="post-author-list"> {{story.user.firstName}} </p>
+
                                 <p class="post-date">
                                     <time datetime="2022-01-01">
                                         <div class="card-footer text-center" style="padding-top: 10px;">

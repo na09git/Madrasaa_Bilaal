@@ -1,3 +1,9 @@
+<!-- Include jQuery -->
+<script src="path/to/jquery-3.6.4.min.js"></script>
+
+<!-- Include DataTables -->
+<script src="path/to/jquery.dataTables.min.js"></script>
+
 <title>Student Problem Page</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css"
     integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
@@ -79,3 +85,12 @@
     <p>No Problem in Our School !</p>
     {{/if}}
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#data_problem").DataTable({
+            order: [0, 'desc']
+        });
+    });
+
+</script>

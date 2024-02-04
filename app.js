@@ -96,12 +96,12 @@ app.get('/home', function (req, res) {
   console.log("You are in ///home<<<>>> Page !")
 });
 // homeadmin render
-app.get('/homeadmin', function (req, res) {
+app.get('/homeadmin', ensureAdmin, function (req, res) {
   res.render('homeadmin', { layout: false });
   console.log("You are in homeAdmin Page !")
 });
 // homeproblem render
-app.get('/homeworker', function (req, res) {
+app.get('/homeworker', ensureAdmin, function (req, res) {
   res.render('homeworker', { layout: false });
   console.log("You are in homeWorker Page !")
 });
@@ -124,7 +124,7 @@ app.get('/workers', (req, res) => {
   res.render('workers', { title: "Workers Page" });
 });
 // Routes Problems Page
-app.get('/problems', (req, res) => {
+app.get('/problems', ensureAdminOrWorker, (req, res) => {
   res.render('problems', { title: "Problem Page" });
 });
 

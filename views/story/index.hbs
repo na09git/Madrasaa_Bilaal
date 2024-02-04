@@ -6,7 +6,7 @@
         <div class="col-lg-6 text-center">
           <h2>Friends Events</h2>
           <p>You can get Events of Bilal Family here </p>
-          <p>Be part of them by sharing your Event Dear :{{name}}.</p>
+          <p>Be part of them by sharing your Event Dear :{{user.firstName}}.</p>
         </div>
       </div>
 
@@ -86,8 +86,12 @@
             </h6>
             {{!-- image --}}
             <div class="post-img" style="object-fit: cover; height: 660%;">
-              <img src="data:{{contentType}};base64,{{imageBase64}}" width="100%" style="height: 100%;"
-                alt="story image" class="img-fluid">
+
+              <a href="data:{{contentType}};base64,{{imageBase64}}" data-gallery="portfolio-gallery-app"
+                class="glightbox img-fluid post-author-img flex-shrink-0">
+                <img src="data:{{contentType}};base64,{{imageBase64}}" width="100%" style="height: 100%;"
+                  alt="story image" class="img-fluid">
+              </a>
             </div>
             {{!-- Read More --}}
             <div class="card-footer text-center ">
