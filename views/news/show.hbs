@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 85px; padding-bottom: 30px;">
+<div class="container" style="padding-top: 35px; padding-bottom: 30px;">
     <div class="row">
         {{!-- Left --}}
         <div class="col-md-8" style="padding-right: 50px; padding-left: 50px;">
@@ -11,6 +11,18 @@
                     <a href="/news/edit/{{news._id}}" class="btn p-1 btn-float text-primary">
                         <i class="fas fa-edit fa-2x mx-1"></i>
                     </a>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div style="padding: 7px;">
+
+                    <a href="data:{{news.contentType}};base64,{{news.imageBase64}}" data-gallery="portfolio-gallery-app"
+                        class="glightbox img-fluid post-author-img flex-shrink-0">
+                        <img src="data:{{news.contentType}};base64,{{news.imageBase64}}" alt="story image"
+                            class="img-fluid" style="height: 450px; width: 100%; border-radius:10px;">
+                    </a>
+
                 </div>
             </div>
 
@@ -47,17 +59,12 @@
             <div class="card text-center">
                 <div class="card-content">
                     <div style="padding-top: 10px;">
-                        <span class="card-title">{{news.user.displayName}}</span>
+                        <span class="card-title">Admin Name: {{news.user.displayName}}</span>
                     </div>
 
                     <div style="padding: 7px;">
-                        {{#if news.imageBase64}}
-                        <img src='data:{{news.contentType}};base64,{{news.imageBase64}}'
-                            class="rounded-circle img-fluid img-small" alt="news image"
-                            style="height: 150px; width: 150px;">
-                        {{else}}
-                        <img src="images/no_image.png" style="width:150; height:150px;" class="img-thumbnail">
-                        {{/if}}
+                        <img src="{{news.user.image}}" class="rounded-circle responsive-img img-small"
+                            alt="news poster image" style="height: 150px; width: 150px;">
                     </div>
                 </div>
                 <hr>

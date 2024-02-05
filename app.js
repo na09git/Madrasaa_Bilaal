@@ -17,6 +17,14 @@ const { ensureAdmin, ensureWorker, ensureAdminOrWorker } = require('./middleware
 const { uuid } = require('uuidv4');
 
 
+const User = require('./models/User')
+
+const Story = require('./models/Story')
+const News = require('./models/News')
+const Student = require('./models/Student')
+const Problem = require('./models/Problem')
+const Worker = require('./models/Worker')
+
 // Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -81,52 +89,6 @@ const hbs = exphbs.create({
 
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs')
-
-// home render
-app.get('/', (request, response, next) => {
-  console.log("Before Fetching the ```````````` Home  Page````````````` !")
-  next();
-}, function (req, res) {
-  res.render('home', { layout: false });
-  console.log("You are in home+++++++ Page !")
-});
-// home render
-app.get('/home', function (req, res) {
-  res.render('home', { layout: false });
-  console.log("You are in ///home<<<>>> Page !")
-});
-// homeadmin render
-app.get('/homeadmin', ensureAdmin, function (req, res) {
-  res.render('homeadmin', { layout: false });
-  console.log("You are in homeAdmin Page !")
-});
-// homeproblem render
-app.get('/homeworker', ensureAdmin, function (req, res) {
-  res.render('homeworker', { layout: false });
-  console.log("You are in homeWorker Page !")
-});
-
-// Routes newspage Page
-app.get('/newspage', (req, res) => {
-  res.render('newspage');
-});
-
-// Routes vission Page
-app.get('/vission', (req, res) => {
-  res.render('vission', { title: "vission" });
-});
-// Routes students Page
-app.get('/students', (req, res) => {
-  res.render('students', { title: "Students Page" });
-});
-// Routes workers Page
-app.get('/workers', (req, res) => {
-  res.render('workers', { title: "Workers Page" });
-});
-// Routes Problems Page
-app.get('/problems', ensureAdminOrWorker, (req, res) => {
-  res.render('problems', { title: "Problem Page" });
-});
 
 
 const sessionStore = new MongoStore({ mongooseConnection: mongoose.connection });

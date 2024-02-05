@@ -15,16 +15,15 @@
                     </a>
                 </div>
             </div>
-            <hr>
-
             <div class="card-content">
                 <div style="padding: 7px;">
-                    {{#if story.imageBase64}}
-                    <img src='data:{{story.contentType}};base64,{{story.imageBase64}}' class="img-fluid img-small"
-                        alt="news image" style="height: 250px; width: 350px;">
-                    {{else}}
-                    <img src="images/no_image.png" style="width:150; height:150px;" class="img-thumbnail">
-                    {{/if}}
+
+                    <a href="data:{{story.contentType}};base64,{{story.imageBase64}}"
+                        data-gallery="portfolio-gallery-app" class="glightbox img-fluid post-author-img flex-shrink-0">
+                        <img src="data:{{story.contentType}};base64,{{story.imageBase64}}" alt="story image"
+                            class="img-fluid" style="height: 450px; width: 100%; border-radius:10px;">
+                    </a>
+
                 </div>
             </div>
 

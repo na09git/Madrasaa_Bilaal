@@ -45,7 +45,11 @@
                 {{!-- 1 image --}}
                 <td style="padding: 2px;">
                     {{#if row.imageBase64}}
-                    <img src='data:{{row.contentType}};base64,{{row.imageBase64}}' width="50" class="student image">
+                    <a href="data:{{row.contentType}};base64,{{row.imageBase64}}" data-gallery="portfolio-gallery-app"
+                        class="glightbox img-fluid post-author-img flex-shrink-0">
+                        <img src='data:{{row.contentType}};base64,{{row.imageBase64}}' alt="news image"
+                            class="img-fluid" width="50">
+                    </a>
                     {{else}}
                     <img src="images/no_image.png" width="50" class="img-thumbnail">
                     {{/if}}
