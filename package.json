@@ -39,7 +39,8 @@
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "swiper": "^11.0.5",
-    "uuidv4": "^6.2.13"
+    "uuidv4": "^6.2.13",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

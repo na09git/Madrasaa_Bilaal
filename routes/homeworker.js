@@ -3,6 +3,8 @@ const passport = require('passport')
 const { ensureAdminOrWorker } = require('../middleware/auth')
 const router = express.Router()
 
+const User = require('../models/User')
+
 
 // @route   GET /home
 router.get('/homeworker', ensureAdminOrWorker, (req, res) => {

@@ -15,6 +15,7 @@ const base64Helper = (data) => new handlebars.SafeString(data.toString('base64')
 const app = express()
 const { ensureAdmin, ensureWorker, ensureAdminOrWorker } = require('./middleware/auth');
 const { uuid } = require('uuidv4');
+const nodemailer = require('nodemailer');
 
 
 const User = require('./models/User')
@@ -133,7 +134,9 @@ app.use('/worker', require('./routes/worker'));
 app.use('/problem', require('./routes/problem'));
 app.use('/privacy', require('./routes/privacy'));
 app.use('/terms', require('./routes/terms'));
-// app.use('/email', require('./routes/email'));
+
+
+
 
 
 const PORT = process.env.PORT || 3000
