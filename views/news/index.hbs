@@ -24,7 +24,7 @@
                     <li>News</li>
                     <div class="col-md-6 w-100">
 
-                        {{!-- search --}}
+                        <!-- search -->
                         <form id="search-site" action='/news/search/:query' method='get' class="row mb-4">
                             <div class="col input-group" style="padding-top: 30px;">
                                 <span class="input-group-text"><i class="fas fa-search fa-lg"></i></span>
@@ -35,13 +35,13 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Search</button>
                             </div>
-                            {{!-- Broadcast --}}
+                            <!-- Broadcast -->
                             <div class="col-md-3" style="padding-top: 42px;">
                                 <a href="/news/create" class="btn bg-primary text-white">Broadcast News</a>
                             </div>
-                            {{!-- Broadcast --}}
+                            <!-- Broadcast -->
                         </form>
-                        {{!-- search --}}
+                        <!-- search -->
 
                     </div>
                 </ol>
@@ -65,14 +65,13 @@
                             <p class="post-category">{{title}}</p>
                         </div>
 
-                        <div class="container" style="height: 300px;">
+                        <div class="container" style="height: auto;">
                             <div class="row">
-                                <div class="col-md-6" style="height: 300px;">
-                                    <div class="card mb-3" style="height: 300px; border: 0;">
+                                <div class="col-md-6">
+                                    <div class="card mb-3" style="border: 0;">
                                         {{#if imageBase64}}
                                         <img src='data:{{contentType}};base64,{{imageBase64}}'
                                             class="news-image img-fluid" style="min-height: 200px;">
-
                                         {{else}}
                                         <img src="images/no_image.png" class="img-thumbnail img-fluid"
                                             style="min-height: 200px;">
@@ -80,38 +79,31 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6" style="height: 300px;">
+                                <div class="col-md-6">
                                     <div class="card-body title">
                                         <a href="/news/{{_id}}">
                                             <p class="card-text">{{stripTags (truncate row.body 200)}}</p>
                                         </a>
                                     </div>
 
+                                    <div class="card-footer text-center" style="padding-top: 100px;">
+                                        <span>{{formatDate news.createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                                    </div>
+
+                                    <div class="card-footer text-center" style="padding-bottom: 30px;">
+                                        <a href="mailto: niletech1513@gmail.com">
+                                            <img src="{{user.image}}" alt="Story image of{{user.firstName}}"
+                                                class="img-fluid post-author-img flex-shrink-0">
+                                        </a>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
 
-
-                        <div class="d-flex align-items-center">
-
-                            <a href="mailto: niletech1513@gmail.com"> <img src="{{user.image}}"
-                                    alt="Story image of{{user.firstName}}"
-                                    class="img-fluid post-author-img flex-shrink-0">
-                            </a>
-                            <div class="post-meta">
-
-                                <p class="post-date">
-                                    <time datetime="2022-01-01">
-                                        <div class="card-footer text-center" style="padding-top: 10px;">
-                                            <span style="padding-left: 40px;"> {{formatDate news.createdAt 'MMMM Do
-                                                YYYY, h:mm:ss a'}}</span>
-                                        </div>
-                                    </time>
-                                </p>
-                                <div class="card-footer text-center" style="padding-bottom: 30px;">
-                                    <a href="/news/{{_id}}" class="btn btn-secondary">Read More</a>
-                                </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="card-footer text-center">
+                                <a href="/news/{{_id}}" class="btn btn-secondary">Read More</a>
                             </div>
                         </div>
 
@@ -121,7 +113,6 @@
                 <p class="col-12 text-center">No News to display</p>
                 {{/each}}
                 <!-- End post list item -->
-
 
             </div>
 

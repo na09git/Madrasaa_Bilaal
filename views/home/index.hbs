@@ -473,6 +473,7 @@
 
 
     <!-- ======= Portfolio Section ======= -->
+    {{!--
     <section id="portfolio" class="portfolio sections-bg">
         <div class="container" data-aos="fade-up">
 
@@ -646,7 +647,9 @@
             </div>
 
         </div>
-    </section><!-- End Portfolio Section -->
+    </section> --}}
+
+    <!-- End Portfolio Section -->
 
 
 
@@ -1019,7 +1022,9 @@
 
     <!-- ======= Start Rececnt News Section ======= -->
     <!-- ======= Start Rececnt News Section ======= -->
-    <section id="recent-posts" class="recent-posts sections-bg">
+
+
+    {{!-- <section id="recent-posts" class="recent-posts sections-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
@@ -1029,22 +1034,13 @@
 
             <div class="row gy-4">
 
-                {{!-- 1 news --}}
                 {{#each news as |row index| }}
                 <div class="col-xl-4 col-md-6">
                     <article>
 
                         <div class="post-img">
                             <img src='data:{{contentType}};base64,{{imageBase64}}' class="news-image img-fluid">
-                            {{!-- {{#if imageBase64}}
-                            <img src='data:{{contentType}};base64,{{imageBase64}}' class="news-image img-fluid"
-                                style="min-height: 200px;">
 
-                            {{else}}
-                            <img src="images/no_image.png" class="img-thumbnail img-fluid" style="min-height: 200px;">
-                            {{/if}}
-                            --}}
-                            {{!-- <img src="/img/blog/blog-1.jpg" alt="" class="img-fluid"> --}}
                         </div>
 
                         <p class="post-category"> {{title}}</p>
@@ -1058,9 +1054,8 @@
                         </h2>
 
                         <div class="d-flex align-items-center">
-                            {{!-- <img src="/img/blog/blog-author.jpg" alt=""
-                                class="img-fluid post-author-img flex-shrink-0"> --}}
-                            {{!-- image --}}
+                            <img src="/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+
                             <a href="mailto: niletech1513@gmail.com"> <img src="{{user.image}}"
                                     alt="Story image of{{user.firstName}}"
                                     class="img-fluid post-author-img flex-shrink-0">
@@ -1084,14 +1079,15 @@
                 {{else}}
                 <p class="col-12 text-center">No, News Update from the institution to display</p>
                 {{/each}}
-                <!-- End post list item -->
             </div>
-            <!-- End recent posts list -->
             <div>
                 <a href="/news" class="btn btn-primary">For More News</a>
             </div>
+
         </div>
     </section>
+    --}}
+
     <!-- End Recent News Posts Section -->
     <!-- End Recent News Posts Section -->
 
@@ -1112,7 +1108,6 @@
                 </div>
 
                 <div class="row gx-lg-0 gy-4">
-
                     <div class="col-lg-4">
 
                         <div class="info-container d-flex flex-column align-items-center justify-content-center">
